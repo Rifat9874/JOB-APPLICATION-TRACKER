@@ -71,3 +71,86 @@ function showJobs(){
     document.getElementById("statInterview").innerText = interview;
     document.getElementById("statRejected").innerText = rejected;
 }
+
+    // Display jobs
+    for(var i = 0; i < jobs.length; i++){
+
+        if(currentTab == "all" || jobs[i].status == currentTab){
+
+            shown++;
+
+            var statusColor = "bg-slate-700/50 text-slate-400";
+
+            if(jobs[i].status == "interview"){
+                statusColor = "bg-emerald-500/20 text-emerald-400";
+            }
+
+            if(jobs[i].status == "rejected"){
+                statusColor = "bg-red-500/20 text-red-400";
+            }
+
+            var card = document.createElement("div");
+            card.className = "job-card p-6 rounded-2xl relative";
+
+            card.innerHTML =
+            '<button onclick="deleteJob('+jobs[i].id+')" class="absolute top-6 right-6 text-slate-500 hover:text-red-500 transition-colors">' +
+            '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">' +
+            '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />' +
+            '</svg></button>' +
+
+            '<h3 class="text-xl font-bold">'+jobs[i].company+'</h3>' +
+            '<p class="text-blue-400 font-semibold">'+jobs[i].role+'</p>' +
+
+            '<div class="flex flex-wrap gap-x-4 gap-y-1 mt-3 text-sm text-slate-400">' +
+            '<span>'+jobs[i].location+'</span> • ' +
+            '<span>'+jobs[i].type+'</span> • ' +
+            '<span>'+jobs[i].salary+'</span></div>' +
+
+            '<div class="mt-3 inline-block px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-widest '+statusColor+'">' +
+            jobs[i].status.replace("_"," ") +
+            '</div>' +
+
+            '<p class="mt-4 text-slate-300 leading-relaxed">'+jobs[i].description+'</p>' +
+
+            '<div class="mt-6 flex gap-3">' +
+            '<button onclick="updateStatus('+jobs[i].id+', \'interview\')" class="btn btn-outline btn-success btn-sm px-6">INTERVIEW</button>' +
+            '<button onclick="updateStatus('+jobs[i].id+', \'rejected\')" class="btn btn-outline btn-error btn-sm px-6">REJECTED</button>' +
+            '</div>';
+
+            container.appendChild(card);
+        }
+    }
+
+    if(shown == 0){
+        emptyState.classList.remove("hidden");
+    } else {
+        emptyState.classList.add("hidden");
+    }
+
+    if(currentTab == "all"){
+        countText.innerText = shown + " jobs";
+    } else {
+        countText.innerText = shown + " of " + total + " jobs";
+    }
+
+
+
+var tabs = document.querySelectorAll('[role="tab"]');
+
+for(var i = 0; i < tabs.length; i++){
+
+    tabs[i].addEventListener("click", function(){
+
+        for(var j = 0; j < tabs.length; j++){
+            tabs[j].classList.remove("tab-active");
+        }
+
+        this.classList.add("tab-active");
+        currentTab = this.getAttribute("data-tab");
+
+        showJobs();
+    });
+}
+
+
+showJobs();
