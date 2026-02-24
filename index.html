@@ -4,10 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Job Application Tracker</title>
-
+  
   <!-- Tailwind + DaisyUI -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet">
+  
   <style>
     body {
        background-color: #0f172a; 
@@ -43,6 +44,7 @@
       }
   </style>
 </head>
+<body class="min-h-screen pb-20">
 
 <div class="max-w-6xl mx-auto px-6 lg:px-8 pt-10">
 
@@ -79,7 +81,8 @@
       <button role="tab" class="tab px-6" data-tab="rejected">Rejected</button>
     </div>
   </div>
-<!-- Jobs container -->
+
+  <!-- Jobs container -->
   <div id="jobsContainer" class="space-y-4"></div>
 
   <!-- Empty state -->
@@ -93,7 +96,8 @@
 
 </div>
 
-
+<!-- Link to external JS -->
+<script src="./javascript.js"></script>
 
 </body>
 </html>

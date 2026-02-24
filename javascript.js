@@ -17,7 +17,6 @@ var jobs = [
 
 var currentTab = "all";
 
-
 function updateStatus(id, newStatus){
 
     for(var i = 0; i < jobs.length; i++){
@@ -28,6 +27,9 @@ function updateStatus(id, newStatus){
 
     showJobs();
 }
+
+
+
 function deleteJob(id){
 
     var temp = [];
@@ -70,7 +72,6 @@ function showJobs(){
     document.getElementById("statTotal").innerText = total;
     document.getElementById("statInterview").innerText = interview;
     document.getElementById("statRejected").innerText = rejected;
-}
 
     // Display jobs
     for(var i = 0; i < jobs.length; i++){
@@ -132,7 +133,7 @@ function showJobs(){
     } else {
         countText.innerText = shown + " of " + total + " jobs";
     }
-
+}
 
 
 var tabs = document.querySelectorAll('[role="tab"]');
