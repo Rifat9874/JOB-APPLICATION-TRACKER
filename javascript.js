@@ -28,3 +28,46 @@ function updateStatus(id, newStatus){
 
     showJobs();
 }
+function deleteJob(id){
+
+    var temp = [];
+
+    for(var i = 0; i < jobs.length; i++){
+        if(jobs[i].id != id){
+            temp.push(jobs[i]);
+        }
+    }
+
+    jobs = temp;
+
+    showJobs();
+}
+
+
+function showJobs(){
+
+    var container = document.getElementById("jobsContainer");
+    var emptyState = document.getElementById("emptyState");
+    var countText = document.getElementById("countText");
+
+    container.innerHTML = "";
+
+    var total = jobs.length;
+    var interview = 0;
+    var rejected = 0;
+    var shown = 0;
+
+    // Count stats
+    for(var i = 0; i < jobs.length; i++){
+        if(jobs[i].status == "interview"){
+            interview++;
+        }
+        if(jobs[i].status == "rejected"){
+            rejected++;
+        }
+    }
+
+    document.getElementById("statTotal").innerText = total;
+    document.getElementById("statInterview").innerText = interview;
+    document.getElementById("statRejected").innerText = rejected;
+}
