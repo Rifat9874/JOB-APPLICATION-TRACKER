@@ -42,6 +42,57 @@
        border-radius: 14px;
         background: rgba(15, 27, 45, 0.55); 
       }
+
+        @media (max-width: 640px) {
+
+    h1 {
+      font-size: 1.6rem;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+    }
+
+    .grid {
+      grid-template-columns: 1fr !important;
+    }
+
+    .stat-box {
+      padding: 1.2rem;
+    }
+
+    .tabs {
+      width: 100%;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .tab {
+      flex: none;
+    }
+
+    #jobsContainer {
+      padding-bottom: 40px;
+    }
+
+    .empty-box {
+      padding: 2rem 1rem;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .flex.items-center.justify-between {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+  }
+</style>
   </style>
 </head>
 <body class="min-h-screen pb-20">
@@ -51,8 +102,8 @@
   <h1 class="text-3xl font-bold text-blue-500 mb-8">Job Application Tracker</h1>
 
   <!-- Stats -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-    <div class="stat-box p-6 rounded-2xl">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-10 sm:mb-12">
+      <div class="stat-box p-6 rounded-2xl">
       <div class="text-xs uppercase tracking-widest text-slate-400 font-bold">TOTAL</div>
       <div id="statTotal" class="text-4xl font-black mt-2 text-white">0</div>
     </div>
