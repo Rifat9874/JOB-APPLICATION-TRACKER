@@ -16,3 +16,15 @@ var jobs = [
 
 
 var currentTab = "all";
+
+
+function updateStatus(id, newStatus){
+
+    for(var i = 0; i < jobs.length; i++){
+        if(jobs[i].id == id){
+            jobs[i].status = newStatus;
+        }
+    }
+
+    showJobs();
+}
